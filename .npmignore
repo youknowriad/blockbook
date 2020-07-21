@@ -1,3 +1,5 @@
 example
 dist
 .github
+.parcel-cache
+.vscode

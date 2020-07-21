@@ -17,11 +17,16 @@ const relativeConfigEntryPoint = path.relative(
 const dist = process.cwd() + '/dist';
 
 // Load blockbook config
-const importConfig = `import '${ relativeConfigEntryPoint }';`;
+const importConfig = `import '${ relativeConfigEntryPoint }';\n`;
 fs.writeFileSync( loadFile, importConfig );
 
 execSync(
-	'npx parcel ' + command + ' ' + appEntryPoint + ' --dist-dir ' + dist,
+	'npx parcel ' +
+		command +
+		' ' +
+		appEntryPoint +
+		' --no-cache --dist-dir ' +
+		dist,
 	{
 		cwd: path.resolve( __dirname, '../../' ),
 		env: {

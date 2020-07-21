@@ -9,6 +9,7 @@ import { BlockIcon, BlockPreview } from '@wordpress/block-editor';
 import { TabPanel } from '@wordpress/components';
 import { Editor } from '../editor';
 import './style.css';
+import { ThemeSwitcher } from '../theme-switcher';
 
 export function RouteBlock() {
 	const { slug } = useParams();
@@ -22,6 +23,10 @@ export function RouteBlock() {
 	return (
 		<div className="bb-route-block">
 			<h1>{ blockType.title }</h1>
+
+			<div className="bb-route-block__theme-switcher">
+				<ThemeSwitcher />
+			</div>
 
 			<TabPanel
 				tabs={ [

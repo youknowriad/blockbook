@@ -1,7 +1,14 @@
 .bb-route-block {
+	position: relative;
 	margin: auto;
 	max-width: 1000px;
 	margin-bottom: var(--bb-grid-unit);
+}
+
+.bb-route-block__theme-switcher {
+	position: absolute;
+	right: var(--bb-grid-unit);
+	top: var(--bb-grid-unit);
 }
 
 .bb-route-block .components-tab-panel__tabs {

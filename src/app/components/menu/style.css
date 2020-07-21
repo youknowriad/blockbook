@@ -9,6 +9,10 @@
 	margin-top: var(--bb-grid-unit);
 }
 
+.bb-menu ul li {
+	margin-bottom: calc( var(--bb-grid-unit) * 0.5 );
+}
+
 .bb-menu a {
 	text-decoration: none;
 	font-weight: bold;

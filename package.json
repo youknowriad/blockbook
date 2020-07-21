@@ -29,7 +29,8 @@
 		"@wordpress/icons": "^2.4.0",
 		"classnames": "^2.2.6",
 		"parcel": "^2.0.0-nightly.318",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "^5.2.0",
+		"use-local-storage-state": "^4.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.6",

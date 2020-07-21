@@ -3,12 +3,13 @@ import { RouteCover } from '../route-cover';
 import { RouteBlock } from '../route-block';
 import { Menu } from '../menu';
 import { Logo } from '../logo';
-
+import { EditorStyles } from '../editor-styles';
 import './style.css';
 
 export function App() {
 	return (
 		<Router>
+			<EditorStyles />
 			<div className="bb-app">
 				<div className="bb-app__sidebar">
 					<Logo />

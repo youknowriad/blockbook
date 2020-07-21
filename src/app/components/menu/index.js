@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from '@wordpress/element';
 import { getBlockType } from '@wordpress/blocks';
 import { SearchControl } from '../search-control';
-import { getRegisteredBlocks } from '../../api';
+import { getRegisteredBlockTypes } from '../../api';
 import './style.css';
 
 const matchKeywords = ( keywords, string ) => {
@@ -27,7 +27,7 @@ function MenuItem( { blockType } ) {
 
 export function Menu() {
 	const [ filterValue, setFilterValue ] = useState( '' );
-	const blockTypes = getRegisteredBlocks()
+	const blockTypes = getRegisteredBlockTypes()
 		.map( ( slug ) => getBlockType( slug ) )
 		.filter( ( blockType ) =>
 			matchKeywords(

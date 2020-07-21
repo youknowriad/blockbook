@@ -22,6 +22,9 @@ export function Editor( { initialBlocks } ) {
 						value={ blocks }
 						onChange={ setBlocks }
 						onInput={ setBlocks }
+						settings={ {
+							templateLock: 'all',
+						} }
 					>
 						<Popover.Slot name="block-toolbar" />
 						<BlockEditorKeyboardShortcuts />
@@ -32,6 +35,7 @@ export function Editor( { initialBlocks } ) {
 						</WritingFlow>
 					</BlockEditorProvider>
 				</DropZoneProvider>
+				<Popover.Slot />
 			</SlotFillProvider>
 		</div>
 	);

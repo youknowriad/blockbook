@@ -1,5 +1,9 @@
-import { registerBlock } from 'blockbook-api';
+import { registerBlockType, registerTheme } from 'blockbook-api';
 
+import twentyNineteenStyle from "bundle-text:./themes/twenty-nineteen.txt";
+import twentyTwentyStyle from "bundle-text:./themes/twenty-twenty.txt";
+
+// Register BlockBook blocks.
 const coreBlocks = [
 	'core/paragraph',
 	'core/image',
@@ -35,6 +39,16 @@ const coreBlocks = [
 	'core/tag-cloud',
 	'core/social-links',
 ];
+coreBlocks.forEach( ( block ) => registerBlockType( block ) );
 
-// Register BlockBook blocks.
-coreBlocks.forEach( ( block ) => registerBlock( block ) );
+// Register Themes
+registerTheme({
+	name: 'twenty-nineteen',
+	title: 'TwentyNineteen',
+	editorStyles: twentyNineteenStyle
+})
+registerTheme({
+	name: 'twenty-twenty',
+	title: 'TwentyTwenty',
+	editorStyles: twentyTwentyStyle
+})

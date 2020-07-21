@@ -14,9 +14,7 @@
 		"url": "https://github.com/youknowriad/blockbbook/issues"
 	},
 	"scripts": {
-		"lint:style": "wp-scripts lint-style src",
-		"lint:js": "wp-scripts lint-js src",
-		"lint": "run-p lint:*"
+		"lint": "wp-scripts lint-js src"
 	},
 	"dependencies": {
 		"@wordpress/element": "^2.16.0",

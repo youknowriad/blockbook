@@ -1,0 +1,17 @@
+.bb-logo {
+	font-weight: bold;
+	display: inline-flex;
+	align-items: center;
+}
+
+.bb-logo span {
+	border-radius: var(--bb-border-radius);
+	background: var(--bb-theme-color);
+	color: #fff;
+	display: inline-flex;
+	width: 30px;
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	margin-right: calc( var(--bb-grid-unit) / 2 );
+}

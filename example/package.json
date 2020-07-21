@@ -1,0 +1,27 @@
+{
+	"name": "blockbook-example",
+	"version": "0.0.1",
+	"private": true,
+	"description": "Example of a BlockBook",
+	"author": "Riad Benguella",
+	"license": "GPL-3.0-or-later",
+	"keywords": [
+		"Gutenberg",
+		"editor",
+		"blocks"
+	],
+	"repository": "git+https://github.com/youknowriad/blockbbook.git",
+	"bugs": {
+		"url": "https://github.com/youknowriad/blockbbook/issues"
+	},
+	"scripts": {
+		"start": "blockbook start",
+		"build": "blockbook build"
+	},
+	"dependencies": {
+		"@wordpress/block-library": "^2.22.2"
+	},
+	"devDependencies": {
+		"blockbook": "file:../"
+	}
+}

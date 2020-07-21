@@ -1,0 +1,46 @@
+.bb-search-control {
+	position: relative;
+}
+
+input[type="search"].bb-search-control__input {
+	display: block;
+	font-family: var(--bb-default-font);
+	padding: calc(var(--bb-grid-unit) / 2);
+	font-size: 0.9em;
+	line-height: var(--bb-default-line-height);
+	background: #fff;
+	border: none;
+	width: 100%;
+	border-radius: var(--bb-border-radius);
+
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+input[type="search"].bb-search-control__input:focus {
+	background: #fff;
+	box-shadow: 0 0 0 1px var(--bb-theme-color);
+	outline: none;
+}
+
+
+input[type="search"].bb-search-control__input::-webkit-search-decoration,
+input[type="search"].bb-search-control__input::-webkit-search-cancel-button,
+input[type="search"].bb-search-control__input::-webkit-search-results-button,
+input[type="search"].bb-search-control__input::-webkit-search-results-decoration {
+	-webkit-appearance: none;
+}
+
+.bb-search-control__icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+}
+
+.bb-search-control__icon > svg {
+	margin: var(--bb-grid-unit);
+	margin-right: calc( var(--bb-grid-unit) / 2 );
+}

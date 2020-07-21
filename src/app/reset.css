@@ -1,0 +1,30 @@
+:root body {
+	--bb-default-font: "Cabin", sans-serif;
+	--bb-default-font-size: 14px;
+	--bb-default-line-height: 1.9em;
+	--bb-sidebar-width: 300px;
+	--bb-grid-unit: 16px;
+	--bb-theme-color: rgb(122, 9, 107);
+	--bb-sidebar-color: rgb(243, 239, 242);
+	--bb-border-radius: 2px;
+	--wp-admin-theme-color: var( --bb-theme-color );
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,600;0,700;1,400&display=swap);
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--bb-default-font);
+	font-size: var(--bb-default-font-size);
+	box-sizing: border-box;
+	height: 100%;
+	font-weight: 400;
+	line-height: var(--bb-default-line-height);
+	-webkit-font-smoothing: antialiased;
+}
+
+#root {
+	height: 100%;
+}

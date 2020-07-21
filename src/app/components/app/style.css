@@ -1,0 +1,20 @@
+.bb-app {
+	display: grid;
+	grid-template-columns: var(--bb-sidebar-width) 1fr;
+	grid-template-areas: "sidebar main";
+	grid-gap: var(--bb-grid-unit);
+	height: 100%;
+}
+
+.bb-app__sidebar {
+	grid-area: sidebar;
+	overflow-y: auto;
+	background: var(--bb-sidebar-color);
+	padding: var(--bb-grid-unit);
+}
+
+.bb-app__main {
+	grid-area: main;
+	overflow-y: auto;
+	padding: var(--bb-grid-unit);
+}

@@ -1,0 +1,59 @@
+.editor-styles-wrapper {
+	font-family: var(--bb-default-font);
+	font-size: var(--bb-default-font-size);
+	line-height: 2em; /* stylelint-disable-line declaration-property-unit-whitelist */
+}
+
+.editor-styles-wrapper p {
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+}
+
+.editor-styles-wrapper ul,
+.editor-styles-wrapper ol {
+	margin: 0;
+	padding: 0;
+}
+
+.editor-styles-wrapper ul {
+	list-style-type: disc;
+}
+
+.editor-styles-wrapper ol {
+	list-style-type: decimal;
+}
+
+.editor-styles-wrapper ul ul,
+.editor-styles-wrapper ol ol,
+.editor-styles-wrapper ul ol,
+.editor-styles-wrapper ol ul {
+	padding-left: 2em;
+}
+
+.editor-styles-wrapper ul li,
+.editor-styles-wrapper ol li {
+	margin-bottom: initial;
+}
+
+.editor-styles-wrapper ul ul,
+.editor-styles-wrapper ol ul {
+	list-style-type: circle;
+}
+
+.editor-styles-wrapper .wp-block {
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-block-start: 0.5em;
+	margin-block-end: 0.5em;
+}
+
+.editor-styles-wrapper .wp-block[data-align="wide"],
+.editor-styles-wrapper .wp-block.alignwide {
+	max-width: 900px;
+}
+
+.editor-styles-wrapper .editor-styles-wrapper .wp-block[data-align="full"],
+.editor-styles-wrapper .editor-styles-wrapper .wp-block.alignfull {
+	max-width: none;
+}

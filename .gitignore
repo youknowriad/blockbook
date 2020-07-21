@@ -1,0 +1,7 @@
+node_modules
+.cache
+!dist/index.html
+dist
+src/app/load.js
+.parcel-cache
+parcel-bundle-reports

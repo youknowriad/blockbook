@@ -1,5 +1,5 @@
 {
-	"name": "blockbook",
+	"name": "blockbook-cli",
 	"version": "0.1.0",
 	"description": "Build and share WordPress blocks in isolation.",
 	"author": "Riad Benguella",

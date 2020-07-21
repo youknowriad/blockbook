@@ -23,7 +23,7 @@ First install blockbook:
 
 ```sh
 cd my-blocks-plugin
-npm install blockbook --save-dev
+npm install blockbook-cli --save-dev
 ```
 
 Once installed, add the two following scripts to the `scripts` section of your `package.json`

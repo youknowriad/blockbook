@@ -20,6 +20,6 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"blockbook": "file:../"
+		"blockbook-cli": "file:../"
 	}
 }

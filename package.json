@@ -1,6 +1,6 @@
 {
 	"name": "blockbook",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "Build and share WordPress blocks in isolation.",
 	"author": "Riad Benguella",
 	"license": "GPL-3.0-or-later",

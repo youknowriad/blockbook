@@ -8,7 +8,7 @@ import './style.css';
 
 export function App() {
 	return (
-		<Router>
+		<Router basename={ window.webpackPublicPath }>
 			<div className="bb-app">
 				<div className="bb-app__sidebar">
 					<Logo />

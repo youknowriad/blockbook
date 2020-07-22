@@ -5,13 +5,23 @@
 }
 
 .bb-logo span {
-	border-radius: var(--bb-border-radius);
-	background: var(--bb-theme-color);
+	border-radius: var( --bb-border-radius );
+	background: var( --bb-theme-color );
 	color: #fff;
 	display: inline-flex;
 	width: 30px;
 	height: 30px;
 	align-items: center;
 	justify-content: center;
-	margin-right: calc( var(--bb-grid-unit) / 2 );
+	margin-right: calc( var( --bb-grid-unit ) / 2 );
+}
+
+.bb-logo.is-size-big {
+	font-size: 40px;
+}
+
+.bb-logo.is-size-big span {
+	width: 70px;
+	height: 70px;
+	border-radius: 6px;
 }

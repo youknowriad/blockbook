@@ -1,0 +1,14 @@
+.bb-route-cover {
+	max-width: 300px;
+	margin: auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.bb-route-cover p {
+	font-size: 18px;
+	line-height: 1.8em;
+}

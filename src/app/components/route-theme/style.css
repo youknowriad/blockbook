@@ -1,0 +1,6 @@
+.bb-route-theme {
+	position: relative;
+	margin: auto;
+	max-width: 1000px;
+	margin-bottom: var( --bb-grid-unit );
+}

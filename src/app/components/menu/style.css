@@ -1,20 +1,26 @@
 .bb-menu {
-	margin-top: calc( var(--bb-grid-unit) * 1.5 );
+	margin-top: calc( var( --bb-grid-unit ) * 1.5 );
+}
+
+.bb-menu h3 {
+	padding: 0;
+	margin-top: var( --bb-grid-unit );
 }
 
 .bb-menu ul {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	margin-top: var(--bb-grid-unit);
+	margin-top: var( --bb-grid-unit );
+	margin-left: var( --bb-grid-unit );
 }
 
 .bb-menu ul li {
-	margin-bottom: calc( var(--bb-grid-unit) * 0.5 );
+	margin-bottom: calc( var( --bb-grid-unit ) * 0.5 );
 }
 
 .bb-menu a {
 	text-decoration: none;
 	font-weight: bold;
-	color: var(--bb-theme-color);
+	color: var( --bb-theme-color );
 }

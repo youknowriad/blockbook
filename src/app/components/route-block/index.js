@@ -11,6 +11,7 @@ import { Editor } from '../editor';
 import { getBlockStories } from '../../api';
 import './style.css';
 import { ThemeSwitcher } from '../theme-switcher';
+import { EditorStyles } from '../editor-styles';
 
 export function RouteBlock() {
 	const { slug } = useParams();
@@ -24,6 +25,7 @@ export function RouteBlock() {
 
 	return (
 		<div className="bb-route-block">
+			<EditorStyles />
 			<div className="bb-route-block__header">
 				<h1>{ blockType.title }</h1>
 				<div className="bb-route-block__theme-switcher">
@@ -155,7 +157,7 @@ export function RouteBlock() {
 							<div className="bb-route-block__stories">
 								{ blockStories.map( ( blockStory ) => (
 									<div key={ blockStory.name }>
-										<h3>Story { blockStory.name }</h3>
+										<h3>{ blockStory.name }</h3>
 										<BlockPreview
 											viewportWidth={ 1000 }
 											blocks={ blockStory.blocks.map(

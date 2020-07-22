@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { RouteCover } from '../route-cover';
 import { RouteBlock } from '../route-block';
+import { RouteTheme } from '../route-theme';
 import { Menu } from '../menu';
 import { Logo } from '../logo';
-import { EditorStyles } from '../editor-styles';
 import './style.css';
 
 export function App() {
 	return (
 		<Router>
-			<EditorStyles />
 			<div className="bb-app">
 				<div className="bb-app__sidebar">
 					<Logo />
@@ -18,6 +17,10 @@ export function App() {
 				<div className="bb-app__main">
 					<Route path="/block/:slug">
 						<RouteBlock />
+					</Route>
+
+					<Route path="/theme/:slug">
+						<RouteTheme />
 					</Route>
 
 					<Route exact path="/">

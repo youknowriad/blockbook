@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from '@wordpress/element';
 import { getBlockType } from '@wordpress/blocks';
 import { SearchControl } from '../search-control';
-import { getRegisteredBlockTypes } from '../../api';
+import { getRegisteredBlockTypes, getRegisteredThemes } from '../../api';
 import './style.css';
 
 const matchKeywords = ( keywords, string ) => {
@@ -12,7 +12,7 @@ const matchKeywords = ( keywords, string ) => {
 	);
 };
 
-function MenuItem( { blockType } ) {
+function MenuItemBlockType( { blockType } ) {
 	if ( ! blockType ) {
 		return null;
 	}
@@ -21,6 +21,17 @@ function MenuItem( { blockType } ) {
 			<Link to={ `/block/${ blockType.name.replace( '/', '---' ) }` }>
 				{ blockType.title }
 			</Link>
+		</li>
+	);
+}
+
+function MenuItemTheme( { theme } ) {
+	if ( ! theme ) {
+		return null;
+	}
+	return (
+		<li>
+			<Link to={ `/theme/${ theme.name }` }>{ theme.title }</Link>
 		</li>
 	);
 }
@@ -39,19 +50,42 @@ export function Menu() {
 				filterValue
 			)
 		);
+	const themes = getRegisteredThemes().filter( ( theme ) =>
+		matchKeywords( [ theme?.title, theme?.name ], filterValue )
+	);
 
 	return (
 		<div className="bb-menu">
 			<SearchControl
-				label="Search blocks"
+				label="Search blocks and themes"
 				value={ filterValue }
 				onChange={ setFilterValue }
 			/>
-			<ul>
-				{ blockTypes.map( ( blockType ) => (
-					<MenuItem key={ blockType.name } blockType={ blockType } />
-				) ) }
-			</ul>
+
+			{ !! blockTypes.length && (
+				<>
+					<h3>Blocks</h3>
+					<ul>
+						{ blockTypes.map( ( blockType ) => (
+							<MenuItemBlockType
+								key={ blockType.name }
+								blockType={ blockType }
+							/>
+						) ) }
+					</ul>
+				</>
+			) }
+
+			{ !! themes.length && (
+				<>
+					<h3>Themes</h3>
+					<ul>
+						{ themes.map( ( theme ) => (
+							<MenuItemTheme key={ theme.name } theme={ theme } />
+						) ) }
+					</ul>
+				</>
+			) }
 		</div>
 	);
 }

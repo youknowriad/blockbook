@@ -76,11 +76,7 @@ To do so, you can register your theme like so:
 
 ```js
 // .blockbook/index.js
-
-// Note that I'm using a txt extension here instead of css
-// That's a bug in the bundler used by blockbook
-// Hopefully, we'll fix that in the future. 
-import myThemeStyle from "bundle-text:./path-to-my-theme-editor-styles.txt";
+import myThemeStyle from "!!raw-loader!./path-to-my-theme-editor-styles.css";
 
 // Once your blocks are loaded, make sure to tell BlockBook to add them to the menu.
 import { registerTheme } from 'blockbook-api';

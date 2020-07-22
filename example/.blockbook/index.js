@@ -1,7 +1,7 @@
 import { registerBlockType, registerTheme } from 'blockbook-api';
 
-import twentyNineteenStyle from "bundle-text:./themes/twenty-nineteen.txt";
-import twentyTwentyStyle from "bundle-text:./themes/twenty-twenty.txt";
+import twentyNineteenStyle from "!!raw-loader!./themes/twenty-nineteen.css";
+import twentyTwentyStyle from "!!raw-loader!./themes/twenty-twenty.css";
 
 // Register BlockBook blocks.
 const coreBlocks = [

@@ -3,36 +3,35 @@
 const path = require( 'path' );
 const { execSync } = require( 'child_process' );
 const fs = require( 'fs' );
+const { sync: resolveBin } = require( 'resolve-bin' );
 
 const myArgs = process.argv.slice( 2 );
-const command = myArgs[ 0 ] === 'start' ? '' : 'build';
-
-const appEntryPoint = path.resolve( __dirname, '../app/index.html' );
+const env =
+	'NODE_ENV=' + ( myArgs[ 0 ] === 'start' ? 'development' : 'production' );
+const bin = myArgs[ 0 ] === 'start' ? 'webpack-dev-server' : 'webpack';
+const command = myArgs[ 0 ] === 'start' ? '--open' : '';
+const appEntryPoint = path.resolve( __dirname, '../app/index.js' );
 const loadFile = path.resolve( __dirname, '../app/load.js' );
 const configEntryPoint = path.resolve( process.cwd(), '.blockbook/index.js' );
 const relativeConfigEntryPoint = path.relative(
 	path.resolve( __dirname, '../app' ),
 	configEntryPoint
 );
-const dist = process.cwd() + '/dist';
 
 // Load blockbook config
 const importConfig = `import '${ relativeConfigEntryPoint }';\n`;
 fs.writeFileSync( loadFile, importConfig );
 
 execSync(
-	'npx parcel ' +
-		command +
-		' ' +
-		appEntryPoint +
-		' --no-cache --dist-dir ' +
-		dist,
+	[
+		env,
+		resolveBin( bin ),
+		command,
+		appEntryPoint,
+		'--config',
+		path.resolve( __dirname, 'webpack.config.js' ),
+	].join( ' ' ),
 	{
-		cwd: path.resolve( __dirname, '../../' ),
-		env: {
-			PATH: process.env.PATH,
-			HOME: process.env.HOME,
-		},
-		stdio: [ 'inherit', 'inherit', 'inherit' ],
+		stdio: 'inherit',
 	}
 );

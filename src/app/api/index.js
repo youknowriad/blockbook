@@ -1,4 +1,4 @@
-import defaultStyle from 'bundle-text:./editor-styles.txt';
+import defaultStyle from '!!raw-loader!./editor-styles.css';
 
 const registeredBlockTypes = [];
 const registeredThemes = [

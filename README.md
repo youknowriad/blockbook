@@ -11,11 +11,11 @@ Here is an example featuring the main WordPress Core Blocks: <https://youknowria
 
 ## Features
 
- - Discover and showcase your blocks, attributes, previews and markup.
- - Support static blocks.
- - Test blocks in different themes.
- - Hot/Live Reloading.
- - Generate a static website.
+-   Discover and showcase your blocks, attributes, previews and markup.
+-   Support static blocks.
+-   Test blocks in different themes.
+-   Hot/Live Reloading.
+-   Generate a static website.
 
 ## 🚀 Getting Started
 
@@ -30,14 +30,14 @@ Once installed, add the two following scripts to the `scripts` section of your `
 
 ```json
 {
-    "scripts": {
-        "blockbook:start": "blockbook start",
-        "blockbook:build": "blockbook build"
-    }
+	"scripts": {
+		"blockbook:start": "blockbook start",
+		"blockbook:build": "blockbook build"
+	}
 }
 ```
 
-The last step is to load your blocks and register them in your BlockBook. To do so, create an `index.js` file inside a `.blockbook` folder at the root of your project. 
+The last step is to load your blocks and register them in your BlockBook. To do so, create an `index.js` file inside a `.blockbook` folder at the root of your project.
 
 This file represents the entry point of your BlockBook config. You can use it to register block types in your BlockBook or provide alternative themes.
 
@@ -46,14 +46,14 @@ This file represents the entry point of your BlockBook config. You can use it to
 ```js
 // .blockbook/index.js
 
-// It's important to import the JS code that registers your block in the @wordpress/blocks package 
-import "./my-block-file.js";
+// It's important to import the JS code that registers your block in the @wordpress/blocks package
+import './my-block-file.js';
 
 // You should also import the stylesheets (editor and style) of your blocks.
-import "./my-block-styles.css";
+import './my-block-styles.css';
 
 // Once your blocks are loaded, make sure to tell BlockBook to add them to the menu.
-import { registerBlockType } from 'blockbook-api';
+import { registerBlockType } from 'blockbook-api';
 
 registerBlockType( 'myplugin/myblock-name' );
 ```
@@ -66,7 +66,7 @@ import { registerBlockType } from '@wordpress/blocks';
 registerBlockType( 'myplugin/myblock-name', blockSettings );
 ```
 
-You can check the  `example` folder in this repository to see a working BlockBook.
+You can check the `example` folder in this repository to see a working BlockBook.
 
 ## Registering Themes
 
@@ -76,20 +76,60 @@ To do so, you can register your theme like so:
 
 ```js
 // .blockbook/index.js
-import myThemeStyle from "!!raw-loader!./path-to-my-theme-editor-styles.css";
-
-// Once your blocks are loaded, make sure to tell BlockBook to add them to the menu.
+import myThemeStyle from '!!raw-loader!./path-to-my-theme-editor-styles.css';
 import { registerTheme } from 'blockbook-api';
 
-registerTheme({
+registerTheme( {
 	name: 'my-theme-name',
 	title: 'My Theme',
-	editorStyles: twentyTwentyStyle
-})
+	editorStyles: twentyTwentyStyle,
+} );
+```
+
+## Registering Block Stories
+
+While developing blocks, you want to be able to see different variations of the same block at the same to ensure the changes you're making are correct no matter the block attributes. To do so you can register **Block Stories** like so:
+
+```js
+// .blockbook/index.js
+import { registerBlockStory } from 'blockbook-api';
+registerBlockStory( 'core/buttons', {
+	name: 'Two Buttons', // Name of the story
+	blocks: [
+		// A blocks array, each block has a name, a set of attributes and potentially inner blocks
+		{
+			name: 'core/buttons',
+			attributes: {
+				align: 'center',
+			},
+			innerBlocks: [
+				{
+					name: 'core/button',
+					attributes: {
+						backgroundColor: 'very-dark-gray',
+						borderRadius: 0,
+						text: 'Get Started',
+					},
+					innerBlocks: [],
+				},
+				{
+					name: 'core/button',
+					attributes: {
+						borderRadius: 0,
+						className: 'is-style-outline',
+						text: 'Learn more',
+						textColor: 'very-dark-gray',
+					},
+					innerBlocks: [],
+				},
+			],
+		},
+	],
+} );
 ```
 
 ## Contributing
 
-We welcome contributions to BlockBook! We have a lot of ideas on the roadmap where you could  help, check the repository issues for more details.
+We welcome contributions to BlockBook! We have a lot of ideas on the roadmap where you could help, check the repository issues for more details.
 
 📥 Pull requests and 🌟 Stars are always welcome.

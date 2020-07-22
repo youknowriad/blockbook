@@ -8,6 +8,7 @@ import {
 import { BlockIcon, BlockPreview } from '@wordpress/block-editor';
 import { TabPanel } from '@wordpress/components';
 import { Editor } from '../editor';
+import { getBlockStories } from '../../api';
 import './style.css';
 import { ThemeSwitcher } from '../theme-switcher';
 
@@ -15,6 +16,7 @@ export function RouteBlock() {
 	const { slug } = useParams();
 	const blockSlug = slug.replace( '---', '/' );
 	const blockType = getBlockType( blockSlug );
+	const blockStories = getBlockStories( blockSlug );
 
 	if ( ! blockType ) {
 		return <div className="bb-route-block">Block type not found</div>;
@@ -22,10 +24,11 @@ export function RouteBlock() {
 
 	return (
 		<div className="bb-route-block">
-			<h1>{ blockType.title }</h1>
-
-			<div className="bb-route-block__theme-switcher">
-				<ThemeSwitcher />
+			<div className="bb-route-block__header">
+				<h1>{ blockType.title }</h1>
+				<div className="bb-route-block__theme-switcher">
+					<ThemeSwitcher />
+				</div>
 			</div>
 
 			<TabPanel
@@ -34,6 +37,10 @@ export function RouteBlock() {
 					blockType.example && { name: 'example', title: 'Example' },
 					blockType.example && { name: 'markup', title: 'Markup' },
 					{ name: 'editor', title: 'Editor' },
+					!! blockStories.length && {
+						name: 'stories',
+						title: 'Stories',
+					},
 				].filter( ( tab ) => !! tab ) }
 			>
 				{ ( currentPanel ) => {
@@ -140,6 +147,28 @@ export function RouteBlock() {
 										: createBlock( blockType.name ),
 								] }
 							/>
+						);
+					}
+
+					if ( currentPanel.name === 'stories' ) {
+						return (
+							<div className="bb-route-block__stories">
+								{ blockStories.map( ( blockStory ) => (
+									<div key={ blockStory.name }>
+										<h3>Story { blockStory.name }</h3>
+										<BlockPreview
+											viewportWidth={ 1000 }
+											blocks={ blockStory.blocks.map(
+												( block ) =>
+													getBlockFromExample(
+														block.name,
+														block
+													)
+											) }
+										/>
+									</div>
+								) ) }
+							</div>
 						);
 					}
 				} }

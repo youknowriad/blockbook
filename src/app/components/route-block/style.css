@@ -2,23 +2,35 @@
 	position: relative;
 	margin: auto;
 	max-width: 1000px;
-	margin-bottom: var(--bb-grid-unit);
+	margin-bottom: var( --bb-grid-unit );
 }
 
-.bb-route-block__theme-switcher {
-	position: absolute;
-	right: var(--bb-grid-unit);
-	top: var(--bb-grid-unit);
+.bb-route-block__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.bb-route-block__theme-switcher .components-base-control__field {
+	display: flex;
+	align-items: center;
+}
+
+.bb-route-block__theme-switcher .components-base-control__label {
+	margin: 0 !important;
+	margin-right: calc( var( --bb-grid-unit ) / 2 ) !important;
 }
 
 .bb-route-block .components-tab-panel__tabs {
-	margin-bottom: var(--bb-grid-unit);
+	clear: both;
+	margin-bottom: var( --bb-grid-unit );
+	background: #f1f1f1;
 }
 
 .bb-route-block__card {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap: var(--bb-grid-unit);
+	grid-gap: var( --bb-grid-unit );
 }
 
 .bb-route-block__icon {
@@ -50,4 +62,9 @@
 .bb-route-block__markup {
 	white-space: pre-wrap;
 	word-wrap: break-word;
+}
+
+.bb-route-block .block-editor-block-preview__container {
+	border-radius: var( --bb-border-radius );
+	border: 1px solid #ccc;
 }

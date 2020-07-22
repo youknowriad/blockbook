@@ -8,6 +8,7 @@ const registeredThemes = [
 		editorStyles: defaultStyle,
 	},
 ];
+const registeredBlockStories = {};
 
 export function registerBlockType( blockName ) {
 	registeredBlockTypes.push( blockName );
@@ -23,4 +24,16 @@ export function registerTheme( themeConfig ) {
 
 export function getRegisteredThemes() {
 	return registeredThemes;
+}
+
+export function registerBlockStory( blockName, story ) {
+	if ( ! registeredBlockStories[ blockName ] ) {
+		registeredBlockStories[ blockName ] = [];
+	}
+
+	registeredBlockStories[ blockName ].push( story );
+}
+
+export function getBlockStories( blockName ) {
+	return registeredBlockStories[ blockName ] ?? [];
 }

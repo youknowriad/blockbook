@@ -9,7 +9,7 @@ import './style.css';
 
 export function App() {
 	const isMobile = useViewportMatch( 'medium', '<' );
-	
+
 	return (
 		<Router basename={ window.webpackPublicPath }>
 			<div className="bb-app">

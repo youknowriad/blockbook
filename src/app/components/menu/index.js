@@ -12,31 +12,36 @@ const matchKeywords = ( keywords, string ) => {
 	);
 };
 
-function MenuItemBlockType( { blockType } ) {
+function MenuItemBlockType( { blockType, onSelect } ) {
 	if ( ! blockType ) {
 		return null;
 	}
 	return (
 		<li>
-			<Link to={ `/block/${ blockType.name.replace( '/', '---' ) }` }>
+			<Link
+				onClick={ onSelect }
+				to={ `/block/${ blockType.name.replace( '/', '---' ) }` }
+			>
 				{ blockType.title }
 			</Link>
 		</li>
 	);
 }
 
-function MenuItemTheme( { theme } ) {
+function MenuItemTheme( { theme, onSelect } ) {
 	if ( ! theme ) {
 		return null;
 	}
 	return (
 		<li>
-			<Link to={ `/theme/${ theme.name }` }>{ theme.title }</Link>
+			<Link onClick={ onSelect } to={ `/theme/${ theme.name }` }>
+				{ theme.title }
+			</Link>
 		</li>
 	);
 }
 
-export function Menu() {
+export function Menu( { onSelect = () => {} } ) {
 	const [ filterValue, setFilterValue ] = useState( '' );
 	const blockTypes = getRegisteredBlockTypes()
 		.map( ( slug ) => getBlockType( slug ) )
@@ -70,6 +75,7 @@ export function Menu() {
 							<MenuItemBlockType
 								key={ blockType.name }
 								blockType={ blockType }
+								onSelect={ onSelect }
 							/>
 						) ) }
 					</ul>
@@ -81,7 +87,11 @@ export function Menu() {
 					<h3>Themes</h3>
 					<ul>
 						{ themes.map( ( theme ) => (
-							<MenuItemTheme key={ theme.name } theme={ theme } />
+							<MenuItemTheme
+								key={ theme.name }
+								theme={ theme }
+								onSelect={ onSelect }
+							/>
 						) ) }
 					</ul>
 				</>

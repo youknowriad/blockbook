@@ -50,32 +50,32 @@ export function RouteBlock() {
 						return (
 							<div className="bb-route-block__card">
 								<div>
-									<p>
+									<div className="bb-route-block__row">
 										<strong>Name:</strong>
 										{ ' ' }
 										<code>{ blockType.name }</code>
-									</p>
-									<p className="bb-route-block__icon">
+									</div>
+									<div className="bb-route-block__icon bb-route-block__row">
 										<strong>Icon:</strong>
 										{ ' ' }
 										<BlockIcon icon={ blockType.icon } />
-									</p>
-									<p>
+									</div>
+									<div className="bb-route-block__row">
 										<strong>Description:</strong>
 										{ ' ' }
 										{ blockType.description }
-									</p>
-									<p>
+									</div>
+									<div className="bb-route-block__row">
 										<strong>Category:</strong>
 										{ ' ' }
 										{ blockType.category }
-									</p>
+									</div>
 									{ !! blockType?.keywords.length && (
-										<p>
+										<div className="bb-route-block__row">
 											<strong>Keywords:</strong>
 											{ ' ' }
 											{ blockType.keywords.join( ', ' ) }
-										</p>
+										</div>
 									) }
 								</div>
 								<div>

@@ -23,14 +23,28 @@
 
 .bb-route-block .components-tab-panel__tabs {
 	clear: both;
-	margin-bottom: var( --bb-grid-unit );
+	margin-bottom: calc( var( --bb-grid-unit ) * 2 );
 	background: #f1f1f1;
 }
 
 .bb-route-block__card {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-gap: var( --bb-grid-unit );
+}
+
+@media (min-width: 800px) {
+	.bb-route-block__card {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.bb-route-block__card h2 {
+	margin-top: 0;
+}
+
+.bb-route-block__row {
+	margin-bottom: var( --bb-grid-unit );
 }
 
 .bb-route-block__icon {

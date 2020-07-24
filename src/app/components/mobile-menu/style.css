@@ -1,0 +1,28 @@
+.bb-mobile-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bb-sidebar-color);
+    z-index: 1;
+}
+
+.bb-mobile-menu.is-opened {
+    min-height: 100%;
+}
+
+.bb-mobile-menu__toggle {
+    position: sticky;
+    top: 0;
+    padding: var(--bb-grid-unit);
+    background: var(--bb-sidebar-color);
+    z-index: 2;
+}
+
+.bb-mobile-menu__content {
+    padding: var(--bb-grid-unit);
+}
+
+.bb-mobile-menu__content .bb-menu {
+    margin-top: 0;
+}

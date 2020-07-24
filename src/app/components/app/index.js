@@ -1,18 +1,21 @@
+import { useViewportMatch } from '@wordpress/compose';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { RouteCover } from '../route-cover';
 import { RouteBlock } from '../route-block';
 import { RouteTheme } from '../route-theme';
-import { Menu } from '../menu';
-import { Logo } from '../logo';
+import { Sidebar } from '../sidebar';
+import { MobileMenu } from '../mobile-menu';
 import './style.css';
 
 export function App() {
+	const isMobile = useViewportMatch( 'medium', '<' );
+
 	return (
 		<Router basename={ window.webpackPublicPath }>
 			<div className="bb-app">
+				{ isMobile && <MobileMenu /> }
 				<div className="bb-app__sidebar">
-					<Logo />
-					<Menu />
+					<Sidebar />
 				</div>
 				<div className="bb-app__main">
 					<Route path="/block/:slug">

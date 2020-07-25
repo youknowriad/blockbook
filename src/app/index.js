@@ -1,6 +1,7 @@
 import { registerCoreBlocks } from '@wordpress/block-library';
 import { render, StrictMode } from '@wordpress/element';
 import { App } from './components/app';
+import './globals';
 import './load.js';
 import './reset.css';
 

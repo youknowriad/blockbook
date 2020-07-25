@@ -1,17 +1,21 @@
 /**
  * External dependencies
  */
+const path = require( 'path' );
+const fs = require( 'fs' );
 const LiveReloadPlugin = require( 'webpack-livereload-plugin' );
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const path = require( 'path' );
 
 /**
  * WordPress dependencies
  */
 const postcssPlugins = require( '@wordpress/postcss-plugins-preset' );
-
 const isProduction = process.env.NODE_ENV === 'production';
+const overrideConfigFile = path.resolve(
+	process.cwd(),
+	'.blockbook/webpack.config.js'
+);
 
 const config = {
 	mode: isProduction ? 'production' : 'development',
@@ -28,6 +32,10 @@ const config = {
 		historyApiFallback: true,
 	},
 	resolve: {
+		modules: [
+			path.resolve( __dirname, '../../node_modules' ),
+			path.resolve( process.cwd(), 'node_modules' ),
+		],
 		alias: {
 			'blockbook-api': path.resolve( __dirname, '../app/api' ),
 		},
@@ -92,4 +100,8 @@ const config = {
 	stats: 'errors-only',
 };
 
-module.exports = config;
+const overrideConfig = fs.existsSync( overrideConfigFile )
+	? require( overrideConfigFile )
+	: ( x ) => x;
+
+module.exports = overrideConfig( config );

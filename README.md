@@ -128,6 +128,49 @@ registerBlockStory( 'core/buttons', {
 } );
 ```
 
+## Custom Build Setup
+
+By default, BlockBook works well with projects relying on the default wp-scripts setup. That said, if you have your own custom setup for JavaScript and Styles, it is possible to use BlockBook by overriding the default `webpack` config. To do so, add a `webpack.config.js` in the `.blockbook` folder that looks like that:
+
+```js
+// .blockbook/webpack.config.js
+
+module.exports = ( defaultWebpackConfig ) => {
+   // Here you can apply modifications to the default config `defaultWebpackConfig`
+
+   return defaultWebpackConfig;
+}
+```
+
+## Frequent Questions
+
+**Can I use the WordPress globals in my block code?**
+
+Since BlockBook is an isolated environment, by default, it assumes that you're consuming code using  `import` like suggested by the `wp-scripts` default setup. So your block code should be something like:
+
+```js
+import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType( myBlockName, myBlockSettings );
+```
+
+but we noticed that a lot of plugins use the WordPress globals directly without build step, more like that:
+
+```js
+wp.blocks.registerBlockType( myBlockName, myBlockSettings );
+```
+
+In order to support the various ways, developers can write their block plugins, some of these globals are made available in BlockBook as well. For the moment, the following variables are available:
+
+```
+wp.data
+wp.hooks
+wp.blocks
+wp.domReady
+```
+
+If your block plugin relies on other variables not available at the moment, please do open an issue on the repository to ask for inclusion.
+
 ## Contributing
 
 We welcome contributions to BlockBook! We have a lot of ideas on the roadmap where you could help, check the repository issues for more details.

@@ -82,7 +82,7 @@ import { registerTheme } from 'blockbook-api';
 registerTheme( {
 	name: 'my-theme-name',
 	title: 'My Theme',
-	editorStyles: twentyTwentyStyle,
+	editorStyles: myThemeStyle,
 } );
 ```
 

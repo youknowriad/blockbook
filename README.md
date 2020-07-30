@@ -167,6 +167,7 @@ wp.data
 wp.hooks
 wp.blocks
 wp.domReady
+wp.i18n
 ```
 
 If your block plugin relies on other variables not available at the moment, please do open an issue on the repository to ask for inclusion.

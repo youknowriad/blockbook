@@ -33,8 +33,8 @@ const config = {
 	},
 	resolve: {
 		modules: [
-			path.resolve( __dirname, '../../node_modules' ),
-			'node_modules',
+			path.relative( process.cwd(), path.resolve( __dirname, '../../node_modules' ) ),
+			path.resolve( process.cwd(), 'node_modules' )
 		],
 		alias: {
 			'blockbook-api': path.resolve( __dirname, '../app/api' ),

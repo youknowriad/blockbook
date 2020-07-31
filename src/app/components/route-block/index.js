@@ -94,6 +94,21 @@ export function RouteBlock() {
 										) ) }
 									</ul>
 								</div>
+								<div>
+									<div>
+										<h2>Supports</h2>
+									</div>
+									<ul className="bb-route-block__supports">
+										{ Object.entries(
+											blockType.supports
+										).map( ( [ key, support ] ) => (
+											<li key={ key }>
+												<strong>{ key }</strong>{ ' ' }
+												{ `- ${ support.toString() }` }
+											</li>
+										) ) }
+									</ul>
+								</div>
 							</div>
 						);
 					}

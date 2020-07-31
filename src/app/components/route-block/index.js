@@ -104,7 +104,9 @@ export function RouteBlock() {
 										).map( ( [ key, support ] ) => (
 											<li key={ key }>
 												<strong>{ key }</strong>{ ' ' }
-												{ `- ${ support.toString() }` }
+												{ `- ${ JSON.stringify(
+													support
+												) }` }
 											</li>
 										) ) }
 									</ul>

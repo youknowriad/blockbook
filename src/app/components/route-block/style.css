@@ -57,7 +57,12 @@
 	align-items: center;
 }
 
-.bb-route-block__attributes {
+.bb-route-block__supports {
+	margin-top: calc( var( --bb-grid-unit ) * 2 );
+}
+
+.bb-route-block__attributes,
+.bb-route-block__supports--list {
 	list-style: none;
 	padding: 0;
 	margin: 0;

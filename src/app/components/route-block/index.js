@@ -77,6 +77,23 @@ export function RouteBlock() {
 											{ blockType.keywords.join( ', ' ) }
 										</div>
 									) }
+									<div className="bb-route-block__supports bb-route-block__row">
+										<div>
+											<h2>Supports</h2>
+										</div>
+										<ul className="bb-route-block__supports--list">
+											{ Object.entries(
+												blockType.supports
+											).map( ( [ key, support ] ) => (
+												<li key={ key }>
+													<strong>{ key }</strong>{ ' ' }
+													{ `- ${ JSON.stringify(
+														support
+													) }` }
+												</li>
+											) ) }
+										</ul>
+									</div>
 								</div>
 								<div>
 									<div>

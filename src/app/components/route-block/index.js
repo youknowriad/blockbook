@@ -77,7 +77,7 @@ export function RouteBlock() {
 											{ blockType.keywords.join( ', ' ) }
 										</div>
 									) }
-									{ !! Object.keys( blockType.supports )
+									{ !! Object.keys( blockType.supports ?? {} )
 										.length && (
 										<div className="bb-route-block__supports bb-route-block__row">
 											<div>

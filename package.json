@@ -9,9 +9,9 @@
 		"editor",
 		"blocks"
 	],
-	"repository": "git+https://github.com/youknowriad/blockbbook.git",
+	"repository": "git+https://github.com/youknowriad/blockbook.git",
 	"bugs": {
-		"url": "https://github.com/youknowriad/blockbbook/issues"
+		"url": "https://github.com/youknowriad/blockbook/issues"
 	},
 	"scripts": {
 		"lint": "wp-scripts lint-js src"

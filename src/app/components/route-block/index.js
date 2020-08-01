@@ -97,6 +97,34 @@ export function RouteBlock() {
 											</ul>
 										</div>
 									) }
+
+									{ !! Object.keys( blockType.styles ?? {} )
+										.length && (
+										<div>
+											<div className="bb-route-block__styles bb-route-block__row">
+												<h2>Styles</h2>
+											</div>
+											<ul className="bb-route-block__styles--list">
+												{ Object.entries(
+													blockType.styles
+												).map( ( [ key, style ] ) => (
+													<li key={ key }>
+														<strong>
+															{ style.label }
+														</strong>
+														{ ! style.isDefault && (
+															<>
+																{ ': ' }
+																<code>
+																	{ `is-style-${ style.name }` }{ ' ' }
+																</code>
+															</>
+														) }
+													</li>
+												) ) }
+											</ul>
+										</div>
+									) }
 								</div>
 								<div>
 									<div>

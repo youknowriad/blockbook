@@ -18,7 +18,11 @@ export function App() {
 					<Sidebar />
 				</div>
 				<div className="bb-app__main">
-					<Route path="/block/:slug">
+					<Route path="/block/:slug/:currentTab">
+						<RouteBlock />
+					</Route>
+
+					<Route exact path="/block/:slug">
 						<RouteBlock />
 					</Route>
 

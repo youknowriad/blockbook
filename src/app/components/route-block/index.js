@@ -44,18 +44,6 @@ export function RouteBlock() {
 						title: 'Stories',
 					},
 				].filter( ( tab ) => !! tab ) }
-				onSelect={ ( tab ) => {
-					if ( 'card' === tab ) {
-						window.history.replaceState( null, null, ' ' );
-						return;
-					}
-					window.location.hash = tab;
-				} }
-				initialTabName={
-					window.location.hash
-						? window.location.hash.substr( 1 )
-						: 'card'
-				}
 			>
 				{ ( currentPanel ) => {
 					if ( currentPanel.name === 'card' ) {

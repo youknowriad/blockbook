@@ -70,7 +70,7 @@ You can check the `example` folder in this repository to see a working BlockBook
 
 ## Registering Themes
 
-BlockBook also allows you to test your blocks with several theme editor styles, or if you're a theme developper, build your editor theme styles in isolation and test theme quickly on different blocks.
+BlockBook also allows you to test your blocks with several theme editor styles, or if you're a theme developer, build your editor theme styles in isolation and test theme quickly on different blocks.
 
 To do so, you can register your theme like so:
 

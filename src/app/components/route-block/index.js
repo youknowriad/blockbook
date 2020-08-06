@@ -4,8 +4,13 @@ import { getBlockStories } from '../../api';
 import './style.css';
 import { ThemeSwitcher } from '../theme-switcher';
 import { EditorStyles } from '../editor-styles';
-import { Tabs } from '../tabs';
 import { ButtonGroup } from '@wordpress/components';
+
+import { BlockCard } from '../block-card';
+import { BlockEditor } from '../block-editor';
+import { BlockExample } from '../block-example';
+import { BlockMarkup } from '../block-markup';
+import { BlockStories } from '../block-stories';
 
 export function RouteBlock() {
 	const { slug, currentTab } = useParams();
@@ -39,7 +44,7 @@ export function RouteBlock() {
 			</div>
 
 			<ButtonGroup>
-				{ tabs.map( ( tab, key ) => {
+				{ tabs.map( ( tab ) => {
 					const destination =
 						tab.name === 'card'
 							? `/block/${ slug }`
@@ -51,7 +56,7 @@ export function RouteBlock() {
 
 					return (
 						<Link
-							key={ key }
+							key={ tab.name }
 							className={ `components-button ${
 								isSelected ? 'is-pressed' : ''
 							}` }
@@ -63,11 +68,25 @@ export function RouteBlock() {
 				} ) }
 			</ButtonGroup>
 
-			<Tabs
-				selectedTab={ currentTab }
-				block={ blockType }
-				stories={ blockStories }
-			/>
+			{ currentTab === '' || currentTab === undefined ? (
+				<BlockCard block={ blockType } />
+			) : null }
+
+			{ currentTab === 'example' ? (
+				<BlockExample block={ blockType } />
+			) : null }
+
+			{ currentTab === 'markup' ? (
+				<BlockMarkup block={ blockType } />
+			) : null }
+
+			{ currentTab === 'editor' ? (
+				<BlockEditor block={ blockType } />
+			) : null }
+
+			{ currentTab === 'stories' ? (
+				<BlockStories stories={ blockStories } />
+			) : null }
 		</div>
 	);
 }

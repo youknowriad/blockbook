@@ -41,21 +41,6 @@
 	margin: 0;
 }
 
-.bb-route-block__example {
-	position: relative;
-	max-width: 100%;
-	box-sizing: border-box;
-}
-
-.bb-route-block__example * {
-	box-sizing: inherit;
-}
-
-.bb-route-block__markup {
-	white-space: pre-wrap;
-	word-wrap: break-word;
-}
-
 .bb-route-block .block-editor-block-preview__container {
 	border-radius: var( --bb-border-radius );
 	border: 1px solid #ccc;

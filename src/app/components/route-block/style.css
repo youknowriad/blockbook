@@ -21,71 +21,12 @@
 	margin-right: calc( var( --bb-grid-unit ) / 2 ) !important;
 }
 
-.bb-route-block .components-tab-panel__tabs {
+.bb-route-block .components-button-group {
 	clear: both;
 	margin-bottom: calc( var( --bb-grid-unit ) * 2 );
 	background: #f1f1f1;
 }
 
-.bb-route-block__card {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: var( --bb-grid-unit );
-}
-
-@media (min-width: 800px) {
-	.bb-route-block__card {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
-.bb-route-block__card h2 {
-	margin-top: 0;
-}
-
-.bb-route-block__row {
-	margin-bottom: var( --bb-grid-unit );
-}
-
-.bb-route-block__icon {
-	display: flex;
-	align-items: center;
-}
-
-.bb-route-block__icon .block-editor-block-icon {
-	display: flex;
-	align-items: center;
-}
-
-.bb-route-block__supports,
-.bb-route-block__styles  {
-	margin-top: calc( var( --bb-grid-unit ) * 2 );
-}
-
-.bb-route-block__attributes,
-.bb-route-block__supports--list,
-.bb-route-block__styles--list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.bb-route-block__example {
-	position: relative;
-	max-width: 100%;
-	box-sizing: border-box;
-}
-
-.bb-route-block__example * {
-	box-sizing: inherit;
-}
-
-.bb-route-block__markup {
-	white-space: pre-wrap;
-	word-wrap: break-word;
-}
-
-.bb-route-block .block-editor-block-preview__container {
-	border-radius: var( --bb-border-radius );
-	border: 1px solid #ccc;
+.bb-route-block .components-button-group a {
+	text-decoration: none;
 }

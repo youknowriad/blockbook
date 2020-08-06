@@ -1,0 +1,9 @@
+.bb-route-block__example {
+	position: relative;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.bb-route-block__example * {
+	box-sizing: inherit;
+}

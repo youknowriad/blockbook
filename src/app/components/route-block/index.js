@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Route } from 'react-router-dom';
 import { getBlockType } from '@wordpress/blocks';
 import { getBlockStories } from '../../api';
 import './style.css';
@@ -19,13 +19,22 @@ export function RouteBlock() {
 	const blockStories = getBlockStories( blockSlug );
 
 	const tabs = [
-		{ name: 'card', title: 'Card' },
-		blockType.example && { name: 'example', title: 'Example' },
-		blockType.example && { name: 'markup', title: 'Markup' },
-		{ name: 'editor', title: 'Editor' },
+		{ name: 'card', title: 'Card', component: BlockCard },
+		blockType.example && {
+			name: 'example',
+			title: 'Example',
+			component: BlockExample,
+		},
+		blockType.example && {
+			name: 'markup',
+			title: 'Markup',
+			component: BlockMarkup,
+		},
+		{ name: 'editor', title: 'Editor', component: BlockEditor },
 		!! blockStories.length && {
 			name: 'stories',
 			title: 'Stories',
+			component: BlockStories,
 		},
 	].filter( ( tab ) => !! tab );
 
@@ -68,25 +77,25 @@ export function RouteBlock() {
 				} ) }
 			</ButtonGroup>
 
-			{ currentTab === '' || currentTab === undefined ? (
-				<BlockCard block={ blockType } />
-			) : null }
-
-			{ currentTab === 'example' ? (
-				<BlockExample block={ blockType } />
-			) : null }
-
-			{ currentTab === 'markup' ? (
-				<BlockMarkup block={ blockType } />
-			) : null }
-
-			{ currentTab === 'editor' ? (
-				<BlockEditor block={ blockType } />
-			) : null }
-
-			{ currentTab === 'stories' ? (
-				<BlockStories stories={ blockStories } />
-			) : null }
+			{ tabs.map( ( tab ) => {
+				const destination =
+					tab.name === 'card'
+						? `/block/${ slug }`
+						: `/block/${ slug }/${ tab.name }`;
+				return (
+					<Route
+						key={ tab.name }
+						exact={ tab.name === 'card' }
+						path={ destination }
+						render={ () => (
+							<tab.component
+								block={ blockType }
+								stories={ blockStories }
+							/>
+						) }
+					/>
+				);
+			} ) }
 		</div>
 	);
 }

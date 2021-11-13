@@ -14,7 +14,7 @@ const bin = myArgs[ 0 ] === 'start' ? 'webpack-dev-server' : 'webpack';
 const command = myArgs[ 0 ] === 'start' ? '--open' : '';
 const appEntryPoint = path.resolve( __dirname, '../app/index.js' );
 const loadFile = path.resolve( __dirname, '../app/load.js' );
-const configEntryPoint = path.resolve( process.cwd(), '.blockbook/index.js' );
+const configEntryPoint = path.resolve( process.cwd(), '.blockbook/index.js' ).replace(/ /g, '\\ ');
 const relativeConfigEntryPoint = path.relative(
 	path.resolve( __dirname, '../app' ),
 	configEntryPoint
@@ -36,12 +36,12 @@ fs.writeFileSync( loadFile, importConfig );
 execSync(
 	[
 		env,
-		resolveBin( bin ),
-		command,
-		appEntryPoint,
-		...extraArgs,
+		resolveBin( bin ).replace(' ', '\\ '),
+		command.replace(/ /g, '\\ '),
+		appEntryPoint.replace(/ /g, '\\ '),
+		...extraArgs.map(x => x.replace(/ /g, '\\ ')),
 		'--config',
-		path.resolve( __dirname, 'webpack.config.js' ),
+		path.resolve( __dirname, 'webpack.config.js' ).replace(/ /g, '\\ ')
 	].join( ' ' ),
 	{
 		stdio: 'inherit',

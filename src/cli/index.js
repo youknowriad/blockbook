@@ -37,7 +37,6 @@ execSync(
 		env,
 		resolveBin( bin ),
 		command,
-		// appEntryPoint,
 		...extraArgs,
 		'--config',
 		path.resolve( __dirname, 'webpack.config.js' ),

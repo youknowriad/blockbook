@@ -1,6 +1,6 @@
 {
 	"name": "blockbook-cli",
-	"version": "0.7.2",
+	"version": "0.7.0",
 	"description": "Build and share WordPress blocks in isolation.",
 	"author": "Riad Benguella",
 	"license": "GPL-3.0-or-later",
@@ -33,7 +33,6 @@
 		"@wordpress/i18n": "^4.2.4",
 		"@wordpress/icons": "^6.1.1",
 		"@wordpress/notices": "^3.2.7",
-		"@wordpress/postcss-plugins-preset": "^3.2.5",
 		"babel-loader": "^8.1.0",
 		"classnames": "^2.2.6",
 		"clean-webpack-plugin": "^3.0.0",

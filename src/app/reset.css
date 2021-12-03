@@ -28,3 +28,7 @@ body {
 #root {
 	height: 100%;
 }
+
+.block-editor-block-preview__content > iframe {
+	border: none;
+}

@@ -3,7 +3,6 @@ import { getBlockType } from '@wordpress/blocks';
 import { getBlockStories } from '../../api';
 import './style.css';
 import { ThemeSwitcher } from '../theme-switcher';
-import { EditorStyles } from '../editor-styles';
 import { ButtonGroup } from '@wordpress/components';
 
 import { BlockCard } from '../block-card';
@@ -35,7 +34,6 @@ export function RouteBlock() {
 
 	return (
 		<div className="bb-route-block">
-			<EditorStyles />
 			<div className="bb-route-block__header">
 				<h1>{ blockType.title }</h1>
 				<div className="bb-route-block__theme-switcher">

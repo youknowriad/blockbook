@@ -5,9 +5,8 @@ import {
 	getBlockFromExample,
 	createBlock,
 } from '@wordpress/blocks';
-import { BlockPreview } from '@wordpress/block-editor';
+import { BlockPreview, BlockEditorProvider } from '@wordpress/block-editor';
 import { useEffect, useState } from '@wordpress/element';
-import { EditorStyles } from '../editor-styles';
 import './style.css';
 
 const coreBlocks = [
@@ -74,8 +73,13 @@ export function RouteTheme() {
 	return (
 		<div className="bb-route-theme">
 			<h1>{ currentTheme.title }</h1>
-			<EditorStyles forceThemeName={ currentTheme.name } />
-			<BlockPreview viewportWidth={ 1000 } blocks={ blocks } />
+			<BlockEditorProvider
+				settings={ {
+					styles: [ { css: currentTheme.editorStyles } ],
+				} }
+			>
+				<BlockPreview viewportWidth={ 1000 } blocks={ blocks } />
+			</BlockEditorProvider>
 		</div>
 	);
 }

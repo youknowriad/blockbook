@@ -12,7 +12,6 @@ const env =
 	'NODE_ENV=' + ( myArgs[ 0 ] === 'start' ? 'development' : 'production' );
 const bin = myArgs[ 0 ] === 'start' ? 'webpack-dev-server' : 'webpack';
 const command = myArgs[ 0 ] === 'start' ? '--open' : '';
-const appEntryPoint = path.resolve( __dirname, '../app/index.js' );
 const loadFile = path.resolve( __dirname, '../app/load.js' );
 const configEntryPoint = path.resolve( process.cwd(), '.blockbook/index.js' );
 const relativeConfigEntryPoint = path.relative(
@@ -38,7 +37,7 @@ execSync(
 		env,
 		resolveBin( bin ),
 		command,
-		appEntryPoint,
+		// appEntryPoint,
 		...extraArgs,
 		'--config',
 		path.resolve( __dirname, 'webpack.config.js' ),

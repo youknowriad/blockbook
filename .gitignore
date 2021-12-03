@@ -5,3 +5,4 @@ dist
 src/app/load.js
 .parcel-cache
 parcel-bundle-reports
+.idea

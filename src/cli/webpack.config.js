@@ -6,11 +6,11 @@ const fs = require( 'fs' );
 const LiveReloadPlugin = require( 'webpack-livereload-plugin' );
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+const webpack = require('webpack');
 
 /**
  * WordPress dependencies
  */
-const postcssPlugins = require( '@wordpress/postcss-plugins-preset' );
 const isProduction = process.env.NODE_ENV === 'production';
 const overrideConfigFile = path.resolve(
 	process.cwd(),
@@ -28,17 +28,10 @@ const config = {
 		publicPath: '/',
 	},
 	devServer: {
-		contentBase: path.resolve( process.cwd(), 'dist' ),
+		static: path.join( __dirname, 'dist' ),
 		historyApiFallback: true,
 	},
 	resolve: {
-		modules: [
-			path.relative(
-				process.cwd(),
-				path.resolve( __dirname, '../../node_modules' )
-			),
-			path.resolve( process.cwd(), 'node_modules' ),
-		],
 		alias: {
 			'blockbook-api': path.resolve( __dirname, '../app/api' ),
 		},
@@ -82,8 +75,9 @@ const config = {
 					{
 						loader: require.resolve( 'postcss-loader' ),
 						options: {
-							ident: 'postcss',
-							plugins: postcssPlugins,
+							postcssOptions: {
+								ident: 'postcss',
+							},
 						},
 					},
 				],
@@ -99,6 +93,9 @@ const config = {
 			new LiveReloadPlugin( {
 				port: process.env.WP_LIVE_RELOAD_PORT || 35729,
 			} ),
+		new webpack.ProvidePlugin( {
+			process: 'process/browser',
+		} ),
 	].filter( Boolean ),
 	stats: 'errors-only',
 };

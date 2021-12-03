@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import defaultStyle from '!!raw-loader!./editor-styles.css';
 
 const registeredBlockTypes = [];

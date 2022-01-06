@@ -32,7 +32,9 @@ export function Editor( { initialBlocks } ) {
 							templateLock: 'all',
 						} }
 					>
-						<EditorStyles styles={[ { css: currentTheme.editorStyles } ]} />
+						<EditorStyles
+							styles={ [ { css: currentTheme.editorStyles } ] }
+						/>
 						<Popover.Slot name="block-toolbar" />
 						<BlockEditorKeyboardShortcuts />
 						<WritingFlow>

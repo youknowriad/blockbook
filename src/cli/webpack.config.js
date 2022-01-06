@@ -6,7 +6,7 @@ const fs = require( 'fs' );
 const LiveReloadPlugin = require( 'webpack-livereload-plugin' );
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const webpack = require('webpack');
+const webpack = require( 'webpack' );
 
 /**
  * WordPress dependencies

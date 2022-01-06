@@ -30,10 +30,9 @@ export function Editor( { initialBlocks } ) {
 						onInput={ setBlocks }
 						settings={ {
 							templateLock: 'all',
-							styles: [ { css: currentTheme.editorStyles } ],
 						} }
 					>
-						<EditorStyles />
+						<EditorStyles styles={[ { css: currentTheme.editorStyles } ]} />
 						<Popover.Slot name="block-toolbar" />
 						<BlockEditorKeyboardShortcuts />
 						<WritingFlow>

@@ -1,10 +1,12 @@
-import { useMemo, useState } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import {
 	BlockEditorProvider,
 	BlockList,
 	BlockEditorKeyboardShortcuts,
 	WritingFlow,
 	ObserveTyping,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__unstableEditorStyles as EditorStyles,
 } from '@wordpress/block-editor';
 import { SlotFillProvider, Popover } from '@wordpress/components';
 import { getRegisteredThemes } from '../../api';
@@ -17,18 +19,9 @@ export function Editor( { initialBlocks } ) {
 		getRegisteredThemes().find(
 			( theme ) => theme.name === currentThemeName
 		) || getRegisteredThemes()[ 0 ];
-	const themeStyles = useMemo(
-		() =>
-			currentTheme.editorStyles.replaceAll(
-				/(?<!-)\bbody\b(?!-)/gi,
-				'.editor-styles-wrapper'
-			),
-		[ currentTheme ]
-	);
 
 	return (
 		<>
-			<style>{ themeStyles }</style>
 			<div className="editor-styles-wrapper">
 				<SlotFillProvider>
 					<BlockEditorProvider
@@ -37,8 +30,10 @@ export function Editor( { initialBlocks } ) {
 						onInput={ setBlocks }
 						settings={ {
 							templateLock: 'all',
+							styles: [ { css: currentTheme.editorStyles } ],
 						} }
 					>
+						<EditorStyles />
 						<Popover.Slot name="block-toolbar" />
 						<BlockEditorKeyboardShortcuts />
 						<WritingFlow>

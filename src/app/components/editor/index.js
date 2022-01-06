@@ -1,4 +1,4 @@
-import { useState } from '@wordpress/element';
+import { useMemo, useState } from '@wordpress/element';
 import {
 	BlockEditorProvider,
 	BlockList,
@@ -6,18 +6,31 @@ import {
 	WritingFlow,
 	ObserveTyping,
 } from '@wordpress/block-editor';
-import {
-	SlotFillProvider,
-	DropZoneProvider,
-	Popover,
-} from '@wordpress/components';
+import { SlotFillProvider, Popover } from '@wordpress/components';
+import { getRegisteredThemes } from '../../api';
+import { useTheme } from '../../local-storage';
 
 export function Editor( { initialBlocks } ) {
 	const [ blocks, setBlocks ] = useState( initialBlocks );
+	const [ currentThemeName ] = useTheme();
+	const currentTheme =
+		getRegisteredThemes().find(
+			( theme ) => theme.name === currentThemeName
+		) || getRegisteredThemes()[ 0 ];
+	const themeStyles = useMemo(
+		() =>
+			currentTheme.editorStyles.replaceAll(
+				/(?<!-)\bbody\b(?!-)/gi,
+				'.editor-styles-wrapper'
+			),
+		[ currentTheme ]
+	);
+
 	return (
-		<div className="editor-styles-wrapper">
-			<SlotFillProvider>
-				<DropZoneProvider>
+		<>
+			<style>{ themeStyles }</style>
+			<div className="editor-styles-wrapper">
+				<SlotFillProvider>
 					<BlockEditorProvider
 						value={ blocks }
 						onChange={ setBlocks }
@@ -34,9 +47,9 @@ export function Editor( { initialBlocks } ) {
 							</ObserveTyping>
 						</WritingFlow>
 					</BlockEditorProvider>
-				</DropZoneProvider>
-				<Popover.Slot />
-			</SlotFillProvider>
-		</div>
+					<Popover.Slot />
+				</SlotFillProvider>
+			</div>
+		</>
 	);
 }

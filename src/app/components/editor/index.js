@@ -5,19 +5,25 @@ import {
 	BlockEditorKeyboardShortcuts,
 	WritingFlow,
 	ObserveTyping,
+	// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
+	__unstableEditorStyles as EditorStyles,
 } from '@wordpress/block-editor';
-import {
-	SlotFillProvider,
-	DropZoneProvider,
-	Popover,
-} from '@wordpress/components';
+import { SlotFillProvider, Popover } from '@wordpress/components';
+import { getRegisteredThemes } from '../../api';
+import { useTheme } from '../../local-storage';
 
 export function Editor( { initialBlocks } ) {
 	const [ blocks, setBlocks ] = useState( initialBlocks );
+	const [ currentThemeName ] = useTheme();
+	const currentTheme =
+		getRegisteredThemes().find(
+			( theme ) => theme.name === currentThemeName
+		) || getRegisteredThemes()[ 0 ];
+
 	return (
-		<div className="editor-styles-wrapper">
-			<SlotFillProvider>
-				<DropZoneProvider>
+		<>
+			<div className="editor-styles-wrapper">
+				<SlotFillProvider>
 					<BlockEditorProvider
 						value={ blocks }
 						onChange={ setBlocks }
@@ -26,6 +32,9 @@ export function Editor( { initialBlocks } ) {
 							templateLock: 'all',
 						} }
 					>
+						<EditorStyles
+							styles={ [ { css: currentTheme.editorStyles } ] }
+						/>
 						<Popover.Slot name="block-toolbar" />
 						<BlockEditorKeyboardShortcuts />
 						<WritingFlow>
@@ -34,9 +43,9 @@ export function Editor( { initialBlocks } ) {
 							</ObserveTyping>
 						</WritingFlow>
 					</BlockEditorProvider>
-				</DropZoneProvider>
-				<Popover.Slot />
-			</SlotFillProvider>
-		</div>
+					<Popover.Slot />
+				</SlotFillProvider>
+			</div>
+		</>
 	);
 }

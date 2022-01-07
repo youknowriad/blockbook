@@ -11,6 +11,7 @@ import {
 import { SlotFillProvider, Popover } from '@wordpress/components';
 import { getRegisteredThemes } from '../../api';
 import { useTheme } from '../../local-storage';
+import { ShortcutProvider } from '@wordpress/keyboard-shortcuts';
 
 export function Editor( { initialBlocks } ) {
 	const [ blocks, setBlocks ] = useState( initialBlocks );
@@ -23,28 +24,32 @@ export function Editor( { initialBlocks } ) {
 	return (
 		<>
 			<div className="editor-styles-wrapper">
-				<SlotFillProvider>
-					<BlockEditorProvider
-						value={ blocks }
-						onChange={ setBlocks }
-						onInput={ setBlocks }
-						settings={ {
-							templateLock: 'all',
-						} }
-					>
-						<EditorStyles
-							styles={ [ { css: currentTheme.editorStyles } ] }
-						/>
-						<Popover.Slot name="block-toolbar" />
-						<BlockEditorKeyboardShortcuts />
-						<WritingFlow>
-							<ObserveTyping>
-								<BlockList />
-							</ObserveTyping>
-						</WritingFlow>
-					</BlockEditorProvider>
-					<Popover.Slot />
-				</SlotFillProvider>
+				<ShortcutProvider>
+					<SlotFillProvider>
+						<BlockEditorProvider
+							value={ blocks }
+							onChange={ setBlocks }
+							onInput={ setBlocks }
+							settings={ {
+								templateLock: 'all',
+							} }
+						>
+							<EditorStyles
+								styles={ [
+									{ css: currentTheme.editorStyles },
+								] }
+							/>
+							<Popover.Slot name="block-toolbar" />
+							<BlockEditorKeyboardShortcuts />
+							<WritingFlow>
+								<ObserveTyping>
+									<BlockList />
+								</ObserveTyping>
+							</WritingFlow>
+						</BlockEditorProvider>
+						<Popover.Slot />
+					</SlotFillProvider>
+				</ShortcutProvider>
 			</div>
 		</>
 	);

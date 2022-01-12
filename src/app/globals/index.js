@@ -7,6 +7,7 @@ import domReady from '@wordpress/dom-ready';
 import * as element from '@wordpress/element';
 import * as blockEditor from '@wordpress/block-editor';
 import * as components from '@wordpress/components';
+import * as blob from '@wordpress/blob';
 
 window.wp = {
 	data,
@@ -17,4 +18,5 @@ window.wp = {
 	i18n,
 	blockEditor,
 	components,
+	blob,
 };

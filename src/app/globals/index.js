@@ -8,6 +8,7 @@ import * as element from '@wordpress/element';
 import * as blockEditor from '@wordpress/block-editor';
 import * as components from '@wordpress/components';
 import * as blob from '@wordpress/blob';
+import * as primitives from '@wordpress/primitives';
 
 window.wp = {
 	data,
@@ -19,4 +20,5 @@ window.wp = {
 	blockEditor,
 	components,
 	blob,
+	primitives,
 };

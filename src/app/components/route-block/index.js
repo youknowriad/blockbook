@@ -10,12 +10,24 @@ import { BlockEditor } from '../block-editor';
 import { BlockExample } from '../block-example';
 import { BlockMarkup } from '../block-markup';
 import { BlockStories } from '../block-stories';
+import { BlockSave } from '../block-save';
 
 export function RouteBlock() {
 	const { slug, currentTab } = useParams();
 	const blockSlug = slug.replace( '---', '/' );
 	const blockType = getBlockType( blockSlug );
 	const blockStories = getBlockStories( blockSlug );
+
+	let blockHasSaveMethod = false;
+	// this is done in a try catch block because we don't have the props etc to pass into the save method
+	// therefore we are only concerned with wether the save method returns null or throws an error.
+	try {
+		if ( !! blockStories.length ) {
+			blockType.save();
+		}
+	} catch {
+		blockHasSaveMethod = true;
+	}
 
 	const tabs = [
 		{ name: 'card', title: 'Card' },
@@ -25,6 +37,10 @@ export function RouteBlock() {
 		!! blockStories.length && {
 			name: 'stories',
 			title: 'Stories',
+		},
+		blockHasSaveMethod && {
+			name: 'save',
+			title: 'Save',
 		},
 	].filter( ( tab ) => !! tab );
 
@@ -84,6 +100,10 @@ export function RouteBlock() {
 
 			{ currentTab === 'stories' ? (
 				<BlockStories stories={ blockStories } />
+			) : null }
+
+			{ currentTab === 'save' ? (
+				<BlockSave stories={ blockStories } />
 			) : null }
 		</div>
 	);
